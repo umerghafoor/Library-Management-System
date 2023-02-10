@@ -86,7 +86,7 @@ bool Search(string searchTerm,bool buyIt)
 	{
 		cout << "!!!!!!!!!!!!!!!!!Unable to open file !!!!!!!!!!!!!!!!!" << endl;
 	}
-	temp.close();
+//	temp.close();
 	if (temp.is_open() && buyIt) 
 	{
 		ofstream Data("Data.csv");

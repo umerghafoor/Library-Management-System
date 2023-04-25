@@ -5,6 +5,12 @@
 
 using namespace std;
 
+/**
+ * The function sets the console text attribute and prints a message based on the input ID.
+ * 
+ * @param ID an integer value representing the ID of the function to be executed. The functionID
+ * function uses this ID to display a specific message on the console.
+ */
 void FunctionID(int ID)
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -39,6 +45,19 @@ void FunctionID(int ID)
 	}
 	SetConsoleTextAttribute(h, 15);
 }
+
+/**
+ * The function searches for a given string in a CSV file and either displays the matching records or
+ * updates the availability of a book based on a boolean flag.
+ * 
+ * @param searchTerm A string representing the term to be searched in the data file.
+ * @param buyIt A boolean parameter that determines whether the function is being called to search for
+ * a book to buy or just to display search results. If buyIt is true, the function will mark the book
+ * as unavailable (by replacing the '1' in the first column with a '0') and display the book details
+ * 
+ * @return a boolean value indicating whether the search term was found in the data file and whether
+ * the book is available for purchase (if the buyIt parameter is set to true).
+ */
 bool Search(string searchTerm,bool buyIt)
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -102,6 +121,10 @@ bool Search(string searchTerm,bool buyIt)
 	cout << endl;
 	return bool(available - 48);
 }
+
+/**
+ * The function reads data from a CSV file and displays it in a formatted table.
+ */
 void ShowData()
 {
 
@@ -129,6 +152,10 @@ void ShowData()
 	}
 	cout << endl << endl;
 }
+
+/**
+ * The function allows the user to enter details of a book and updates the stock in a CSV file.
+ */
 void EnterStock()
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -168,6 +195,11 @@ void EnterStock()
 	}
 	Data.close();
 }
+
+/**
+ * The function "Issue" allows a user to search for a book by its serial number and buy it if it is
+ * available.
+ */
 void Issue()
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -209,9 +241,13 @@ int main()
 {
 	string searchTerm;
 	int option;
-	int *pOption = &option;
+	int pOption = 1;
 
-	while (*pOption!=5)
+	/* The code is running a loop that displays a menu of options for a library management system and
+    prompts the user to enter an option. Depending on the option selected, the code calls different
+    functions to perform tasks such as displaying all data, searching for a book, entering new data, or
+    buying a book. The loop continues until the user selects the "Exit" option (option 5). */
+    while (pOption!=5)
 	{
 		system("cls");
 		FunctionID(0);
